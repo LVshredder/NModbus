@@ -13,7 +13,7 @@ namespace NModbus.Device
         private readonly IModbusLogger _logger;
         private readonly IDictionary<byte, IModbusSlave> _slaves = new ConcurrentDictionary<byte, IModbusSlave>();
 
-        protected ModbusSlaveNetwork(IModbusTransport transport, IModbusFactory modbusFactory, IModbusLogger logger) 
+        protected ModbusSlaveNetwork(IModbusTransport transport, IModbusFactory modbusFactory, IModbusLogger logger)
             : base(transport)
         {
             ModbusFactory = modbusFactory;
@@ -63,7 +63,7 @@ namespace NModbus.Device
                 // only service requests addressed to our slaves
                 if (slave == null)
                 {
-                    Console.WriteLine($"NModbus Slave Network ignoring request intended for NModbus Slave {request.SlaveAddress}");
+                    Logger.Information($"NModbus Slave Network ignoring request intended for NModbus Slave {request.SlaveAddress}");
                 }
                 else
                 {
